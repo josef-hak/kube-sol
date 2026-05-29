@@ -26,6 +26,7 @@ raw:
               "username": "josef",
               "enabled": true,
               "email": "josef@example.com",
+              "groups": ["k8s-admins"],
               "firstName": "Josef",
               "lastName": "Hak",
               "emailVerified": true,
@@ -41,6 +42,7 @@ raw:
               "username": "lee",
               "enabled": true,
               "email": "lxie@example.com",
+              "groups": ["k8s-readonly"],
               "firstName": "Lee",
               "lastName": "Xie",
               "emailVerified": true,
@@ -52,6 +54,10 @@ raw:
                 }
               ]
             }
+          ],
+          "groups": [
+            {"name": "k8s-admins"},
+            {"name": "k8s-readonly"}
           ],
           "clients": [
             {
@@ -75,6 +81,21 @@ raw:
               ],
               "webOrigins": [
                 "https://jupyterhub.um3.172.19.112.42.sslip.io"
+              ],
+              "standardFlowEnabled": true,
+              "directAccessGrantsEnabled": false
+            },
+            {
+              "clientId": "headlamp",
+              "enabled": true,
+              "protocol": "openid-connect",
+              "publicClient": false,
+              "secret": "headlamp-secret",
+              "redirectUris": [
+                "https://headlamp.um3.172.19.112.42.sslip.io/oidc-callback"
+              ],
+              "webOrigins": [
+                "https://headlamp.um3.172.19.112.42.sslip.io"
               ],
               "standardFlowEnabled": true,
               "directAccessGrantsEnabled": false
