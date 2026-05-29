@@ -2,13 +2,18 @@ keycloakx:
   ingress:
     enabled: true
     annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: private-ca-issuer
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure # don't allow http
+      traefik.ingress.kubernetes.io/router.tls: "true" # not needed when "tls" section is used
     rules:
       - host: keycloak.um3.172.19.112.42.sslip.io
         paths:
           - path: "/"
             pathType: Prefix
+    tls:
+      - hosts:
+          - keycloak.um3.172.19.112.42.sslip.io
+        secretName: keycloak-tls
   command:
     - "/opt/keycloak/bin/kc.sh"
     - "start"
