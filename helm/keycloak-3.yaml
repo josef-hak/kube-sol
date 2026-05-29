@@ -20,9 +20,7 @@ keycloakx:
     - "--http-port=8080"
     - "--hostname-strict=false"
     - "--proxy-headers=xforwarded"
-    - "--import-realm"
 
-    # - "--hostname=keycloak.um3.172.19.112.42.sslip.io"
   extraEnv: |
     - name: KC_BOOTSTRAP_ADMIN_USERNAME
       value: admin
@@ -34,6 +32,11 @@ keycloakx:
     - name: JAVA_OPTS_APPEND
       value: >-
         -Djgroups.dns.query=keycloakx-headless
+        -Dkeycloak.migration.action=import
+        -Dkeycloak.migration.provider=dir
+        -Dkeycloak.migration.dir=/opt/keycloak/data/import
+        -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+        -Dkeycloak.migration.replace-placeholders=true
 
   dbchecker:
     enabled: true
