@@ -77,10 +77,10 @@ raw:
               "publicClient": false,
               "secret": "jupyterhub-secret",
               "redirectUris": [
-                "https://jupyterhub.um3.172.19.112.42.sslip.io/hub/oauth_callback"
+                "https://jupyterhub.MY_SERVER.MY_IP.sslip.io/hub/oauth_callback"
               ],
               "webOrigins": [
-                "https://jupyterhub.um3.172.19.112.42.sslip.io"
+                "https://jupyterhub.MY_SERVER.MY_IP.sslip.io"
               ],
               "standardFlowEnabled": true,
               "directAccessGrantsEnabled": false
@@ -92,10 +92,10 @@ raw:
               "publicClient": false,
               "secret": "headlamp-secret",
               "redirectUris": [
-                "https://headlamp.um3.172.19.112.42.sslip.io/oidc-callback"
+                "https://headlamp.MY_SERVER.MY_IP.sslip.io/oidc-callback"
               ],
               "webOrigins": [
-                "https://headlamp.um3.172.19.112.42.sslip.io"
+                "https://headlamp.MY_SERVER.MY_IP.sslip.io"
               ],
               "standardFlowEnabled": true,
               "directAccessGrantsEnabled": false

@@ -34,14 +34,14 @@ kube-prometheus-stack:
       size: 1Gi
     ingress:
       enabled: true
-      hosts: ['grafana.um3.172.19.112.42.sslip.io'] # update
+      hosts: ['grafana.MY_SERVER.MY_IP.sslip.io'] # update
       annotations:
         cert-manager.io/cluster-issuer: private-ca-issuer # letsencrypt-prod
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
       tls:
         - secretName: grafana-tls
-          hosts: ['grafana.um3.172.19.112.42.sslip.io'] # update
+          hosts: ['grafana.MY_SERVER.MY_IP.sslip.io'] # update
 
   alertmanager:
     enabled: false # default: true

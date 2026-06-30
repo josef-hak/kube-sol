@@ -81,7 +81,7 @@ raw:
     spec:
       ingressClassName: traefik
       rules:
-        - host: ca.um3.172.19.112.42.sslip.io
+        - host: ca.MY_SERVER.MY_IP.sslip.io
           http:
             paths:
               - path: /

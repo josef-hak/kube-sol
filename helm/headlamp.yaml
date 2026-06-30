@@ -6,11 +6,11 @@ headlamp:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure # don't allow http
       traefik.ingress.kubernetes.io/router.tls: "true" # not needed when "tls" section is used
     hosts:
-      - host: headlamp.um3.172.19.112.42.sslip.io
+      - host: headlamp.MY_SERVER.MY_IP.sslip.io
         paths:
           - path: "/"
             type: Prefix
     tls:
       - hosts:
-          - headlamp.um3.172.19.112.42.sslip.io
+          - headlamp.MY_SERVER.MY_IP.sslip.io
         secretName: headlamp-tls

@@ -6,13 +6,13 @@ keycloakx:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure # don't allow http
       traefik.ingress.kubernetes.io/router.tls: "true" # not needed when "tls" section is used
     rules:
-      - host: keycloak.um3.172.19.112.42.sslip.io
+      - host: keycloak.MY_SERVER.MY_IP.sslip.io
         paths:
           - path: "/"
             pathType: Prefix
     tls:
       - hosts:
-          - keycloak.um3.172.19.112.42.sslip.io
+          - keycloak.MY_SERVER.MY_IP.sslip.io
         secretName: keycloak-tls
   command:
     - "/opt/keycloak/bin/kc.sh"

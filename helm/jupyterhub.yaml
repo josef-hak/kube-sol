@@ -1,14 +1,14 @@
   jupyterhub:
     ingress:
       enabled: true
-      hosts: ['jupyterhub.um3.172.19.112.42.sslip.io']
+      hosts: ['jupyterhub.MY_SERVER.MY_IP.sslip.io']
       annotations:
         cert-manager.io/cluster-issuer: private-ca-issuer
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
       tls:
       - hosts:
-          - jupyterhub.um3.172.19.112.42.sslip.io
+          - jupyterhub.MY_SERVER.MY_IP.sslip.io
         secretName: jupyterhub-tls
     hub:
       config:
@@ -21,12 +21,12 @@
           client_secret: jupyterhub-secret
           token_endpoint_auth_method: client_secret_post
           validate_server_cert: false # when running without valid https cert
-          oauth_callback_url: https://jupyterhub.um3.172.19.112.42.sslip.io/hub/oauth_callback
+          oauth_callback_url: https://jupyterhub.MY_SERVER.MY_IP.sslip.io/hub/oauth_callback
 
-          authorize_url: https://keycloak.um3.172.19.112.42.sslip.io/auth/realms/homelab/protocol/openid-connect/auth
-          token_url: https://keycloak.um3.172.19.112.42.sslip.io/auth/realms/homelab/protocol/openid-connect/token
-          userdata_url: https://keycloak.um3.172.19.112.42.sslip.io/auth/realms/homelab/protocol/openid-connect/userinfo
-          logout_redirect_url: https://keycloak.um3.172.19.112.42.sslip.io/auth/realms/homelab/protocol/openid-connect/logout
+          authorize_url: https://keycloak.MY_SERVER.MY_IP.sslip.io/auth/realms/homelab/protocol/openid-connect/auth
+          token_url: https://keycloak.MY_SERVER.MY_IP.sslip.io/auth/realms/homelab/protocol/openid-connect/token
+          userdata_url: https://keycloak.MY_SERVER.MY_IP.sslip.io/auth/realms/homelab/protocol/openid-connect/userinfo
+          logout_redirect_url: https://keycloak.MY_SERVER.MY_IP.sslip.io/auth/realms/homelab/protocol/openid-connect/logout
           
           scope:
             - openid
@@ -43,5 +43,5 @@
             - josef
 
       extraEnv:
-        OAUTH2_AUTHORIZE_URL: https://keycloak.um3.172.19.112.42.sslip.io/realms/homelab/protocol/openid-connect/auth
-        OAUTH2_TOKEN_URL: https://keycloak.um3.172.19.112.42.sslip.io/realms/homelab/protocol/openid-connect/token
+        OAUTH2_AUTHORIZE_URL: https://keycloak.MY_SERVER.MY_IP.sslip.io/realms/homelab/protocol/openid-connect/auth
+        OAUTH2_TOKEN_URL: https://keycloak.MY_SERVER.MY_IP.sslip.io/realms/homelab/protocol/openid-connect/token
