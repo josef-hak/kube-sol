@@ -1,3 +1,8 @@
+image:
+  tag: latest
+
+replicas: 4
+
 ingress:
   enabled: true
   host:  k0rdent-catalog-web.MY_SERVER.MY_IP.sslip.io
