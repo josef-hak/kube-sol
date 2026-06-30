@@ -14,3 +14,17 @@ traefik:
     - "--entrypoints.web.http.redirections.entrypoint.to=:443"
     - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
     - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+
+  metrics:
+    prometheus:
+      service:
+        enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: traefik
+        interval: 30s
+        additionalLabels:
+          release: grafana
+      addEntryPointsLabels: true
+      addRoutersLabels: true
+      addServicesLabels: true
