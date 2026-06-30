@@ -7,4 +7,4 @@ ingress:
     traefik.ingress.kubernetes.io/router.tls: "true"
   tls:
     - secretName: grafana-tls
-      hosts: [' k0rdent-catalog-web.MY_SERVER.MY_IP.sslip.io'
+      hosts: ['k0rdent-catalog-web.MY_SERVER.MY_IP.sslip.io']
