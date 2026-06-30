@@ -1,10 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-helm upgrade --install headlamp \
-  oci://ghcr.io/k0rdent/catalog/charts/headlamp \
-  --version 0.40.0 \
-  -n headlamp \
+helm upgrade --install k0rdent-catalog-web \
+  oci://ghcr.io/k0rdent/catalog/charts/k0rdent-catalog-web
+  -n k0rdent-catalog-web \
   --create-namespace \
-  -f helm/headlamp.yaml
-
+  -f helm/k0rdent-catalog-web.yaml
