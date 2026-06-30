@@ -1,8 +1,15 @@
 kube-prometheus-stack:
   prometheus:
     prometheusSpec:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 500m
+          memory: 512Mi
       maximumStartupDurationSeconds: 300
-      retention: 15d
+      retention: 2d
       storageSpec:
         volumeClaimTemplate:
           spec:
@@ -11,7 +18,15 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 1Gi
+
   grafana:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
     persistence:
       enabled: true
       accessModes:
@@ -19,13 +34,32 @@ kube-prometheus-stack:
       size: 1Gi
     ingress:
       enabled: true
-      hosts: ['grafana.um3.172.19.112.42.sslip.io']
+      hosts: ['grafana.um3.172.19.112.42.sslip.io'] # update
       annotations:
-        cert-manager.io/cluster-issuer: private-ca-issuer
+        cert-manager.io/cluster-issuer: private-ca-issuer # letsencrypt-prod
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
       tls:
         - secretName: grafana-tls
-          hosts: ['grafana.um3.172.19.112.42.sslip.io']
+          hosts: ['grafana.um3.172.19.112.42.sslip.io'] # update
+
   alertmanager:
     enabled: false # default: true
+
+  prometheusOperator:
+    resources:
+      requests:
+        cpu: 25m
+        memory: 64Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+
+  kube-state-metrics:
+    resources:
+      requests:
+        cpu: 25m
+        memory: 64Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
